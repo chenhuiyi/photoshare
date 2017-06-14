@@ -1,0 +1,28 @@
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<head>
+    <title>Photoshare - Create an tag!</title>
+</head>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+    <body>
+        <div class="title">
+            <h1>Enter the single word tag below:</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="/addtag/{{pid}}">
+                <label for="tag">Tag:</label>
+                <input type="text" name="tag" required='true'/>
+                <input type="submit" value = 'Add'/>
+            </form>
+         </div>
+    </body>
+<p> <a href = "{{url_for('picture', pid = pid)}}">Back to picture</a></p>
+  <p> Go to <a href='/profile'>profile?</a></p>
+
+
+<ul>
+
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

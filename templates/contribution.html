@@ -1,0 +1,34 @@
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<!doctype html>
+
+<title>Photoshare - top 10 contributors</title>
+
+<body>
+{% if contributors %}
+<h2>Here's our TOP 10 contributors!</h2>
+<table style="width:100%">
+  <tr>
+    <th>email</th>
+    <th>total contribution</th>
+  </tr>
+ {% for contributor in contributors %}
+  <tr>
+    {% for item in contributor %}
+    <td>{{item}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+
+<h2> No contributor available. <h2> 
+{% endif %}
+
+
+<p> Go to <a href='/profile'>profile?</a></p>
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>
+
+</body>

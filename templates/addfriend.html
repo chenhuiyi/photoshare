@@ -1,0 +1,42 @@
+<!-- author huiyi chen (huiyich@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare - Add friend</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+
+ <form action='addfriend' method='POST'>
+<label for="friend_email">Add a new friend by email: </label>
+<input type="email" name="friend_email" placeholder = "email"/>
+<input type='submit' value = "Add"></input>
+ </form></br>
+
+
+<p>Looking for new friends? Try <a href='/searchfriends'>search friend</a>!</p>
+
+{% if results %}
+<h2>Here's your searching results</h2>
+<table style="width:50%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>email</th>
+  </tr>
+ {% for friend in results %}
+  <tr>
+    {% for item in friend %}
+    <td>{{item}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<p> Go to <a href='/profile'>profile?</a></p>
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

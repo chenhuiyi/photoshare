@@ -1,0 +1,45 @@
+
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare - album</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+
+{% endif %}
+
+<h3> Album: {{album_name}}</h3>
+
+<ul>
+<p> Creator: {{first_name}} {{last_name}} </p>
+<p> Creation date: {{date_of_creation}} </p>
+
+{% if auth %}
+	<li><a href = "{{url_for('upload_file', aid = album_id)}}">Upload a photo</a></li>
+	<li><a href = "{{url_for('deleteAlbum', aid = album_id)}}">Delete this album</a></li>
+{% endif %}
+
+
+{% if pictures %}
+<h2>Here's pictures in this album.</h2>
+<h3>Click on pictures to see more information.</h3>
+    <ul>
+    {% for picture in pictures %}
+
+        <li>{{picture[1]}}<br>
+        <a href="{{url_for('picture', pid = picture[0])}}">
+        <img src='data:image/png;base64, {{picture[2]}}'  style="width:304px;height:228px;"> </a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+  <p> Go to <a href='/profile'>profile?</a></p>
+
+
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

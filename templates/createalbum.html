@@ -1,0 +1,27 @@
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<head>
+    <title>Photoshare - Create an album!</title>
+</head>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+    <body>
+        <div class="title">
+            <h1>Enter album information below</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="/createalbum">
+                <label for="album_name">Enter your album name:</label>
+                <input type="text" name="album_name" required='true'/>
+                <input type="submit" value = 'Create'/>
+            </form>
+         </div>
+    </body>
+  <p> Go to <a href='/profile'>profile?</a></p>
+
+
+<ul>
+
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

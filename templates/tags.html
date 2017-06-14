@@ -1,0 +1,42 @@
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare - View pictures by tag</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+
+{% endif %}
+
+
+<h3> Tag: <a href = "{{url_for('photosByTag', tag = tag)}}">{{tag}}</a></h3>
+
+
+<li><a href = "{{url_for('myPhotosByTag', tag = tag)}}">view my photos</a></li>
+<li><a href = "{{url_for('photosByTag', tag = tag)}}">view all photos</a></li>
+
+
+
+{% if pictures %}
+<h2>Here's pictures with this tag.</h2>
+<h3>Click on pictures to see more information.</h3>
+    <ul>
+    {% for picture in pictures %}
+
+        <li>{{picture[1]}}<br>
+        <a href="{{url_for('picture', pid = picture[0])}}">
+        <img src='data:image/png;base64, {{picture[2]}}'  style="width:304px;height:228px;"> </a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+  <p> Go to <a href='/profile'>profile?</a></p>
+
+
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

@@ -1,0 +1,62 @@
+
+<!-- author HUIYI CHEN (huiyich@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare - picture</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+
+{% endif %}
+
+<h3> Album: <a href = "{{url_for('album', aid = album_id)}}">{{album_name}}</a></h3>
+
+<ul>
+<p> Creator: {{first_name}} {{last_name}} </p>
+
+{% if auth %}
+	<li><a href = "{{url_for('addTag', pid = pid)}}">Add a new tag</a></li>
+	<li><a href = "{{url_for('deletePicture', pid = pid)}}">Delete this picture</a></li>
+{% else %}
+  <li><a href = "{{url_for('comment', pid = pid)}}">Leave a comment</a></li>
+{% endif %}
+
+
+
+<h3>Caption: {{caption}}</h3>
+<h4>{{likes}} people like this picture, how about you? <a href = "{{url_for('like', pid = pid)}}">like</a></h4>
+<h4>Tags: </h4>
+<ul>
+{% if tags %}
+  {% for tag in tags %}
+    <li><a href = "{{url_for('photosByTag', tag = tag[0])}}">{{tag[0]}}</a></li>
+
+  {% endfor %}
+{% endif %}
+</ul>
+<p><img src='data:image/png;base64, {{imgdata}}'  style="width:456px;height:342px;"></p>
+
+
+<h4>Comments: </h4>
+<ul>
+{% if comments %}
+
+{% for comment in comments %}
+
+<li><h5>By {{comment[0]}} {{comment[1]}}: </h5>
+<font size = "2">{{comment[2]}} </font><br /></li>
+{% endfor %}
+
+{% endif %}
+  </ul>
+
+
+
+  <p> Go to <a href='/profile'>profile?</a></p>
+
+
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

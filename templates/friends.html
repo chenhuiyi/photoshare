@@ -1,0 +1,46 @@
+<!-- author huiyi chen (huiyich@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare - View friends</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+
+{% endif %}
+
+{% if friendslist %}
+<h2>Here's your friends list</h2>
+<table style="width:50%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>email</th>
+  </tr>
+ {% for friend in friendslist %}
+  <tr>
+    {% for item in friend %}
+    <td>{{item}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+   
+<p><a href='/addfriend'>Add a new friend</a></p>
+{% else %}
+<p>You don't have any friend yet, <a href='/addfriend'>Add a new friend</a> now ?</p>
+{% endif %}
+
+{% if name is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+
+<ul>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>
+
+  
